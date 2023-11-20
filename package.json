@@ -1,0 +1,19 @@
+{
+  "name": "test-vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KomarovVladimir/test-vite.git"
+  },
+  "author": "Vladimir Komarov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KomarovVladimir/test-vite/issues"
+  },
+  "homepage": "https://github.com/KomarovVladimir/test-vite#readme"
+}
