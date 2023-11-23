@@ -4,11 +4,9 @@ import { ARTICLES_TAG } from "./tags";
 
 export const baseApi = createApi({
     reducerPath: "api",
-    baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.BASE_URL }),
-    endpoints: (builder) => ({
-        getPokemonByName: builder.query<null, string>({
-            query: (id) => `article/${id}`,
-        }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: "https://jsonplaceholder.typicode.com",
     }),
+    endpoints: () => ({}),
     tagTypes: [ARTICLES_TAG],
 });

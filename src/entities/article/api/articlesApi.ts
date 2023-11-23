@@ -4,15 +4,15 @@ import { Article } from "../model/types";
 
 export const articlesApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getArticlePreviews: build.query<Article, void>({
+        getArticlePreviews: build.query<Article[], void>({
             query: () => ({
-                url: `/cart`,
+                url: `/posts`,
             }),
             providesTags: ["ARTICLES_TAG"],
         }),
         getArticle: build.query<Article, string>({
             query: (articleId) => ({
-                url: `/cart/:${articleId}`,
+                url: `/article/:${articleId}`,
             }),
             providesTags: ["ARTICLES_TAG"],
         }),

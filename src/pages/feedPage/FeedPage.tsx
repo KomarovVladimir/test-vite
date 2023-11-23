@@ -1,1 +1,3 @@
-export const FeedPage = () => <div>Feed Page</div>;
+import { ArticleList } from "widgets/articleList";
+
+export const FeedPage = () => <ArticleList />;
