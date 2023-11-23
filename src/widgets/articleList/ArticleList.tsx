@@ -5,8 +5,8 @@ export const ArticleList = () => {
 
     return (
         <ol className="list-decimal">
-            {data.map(({ title, body }) => (
-                <li>
+            {data.map(({ title, body }, index) => (
+                <li key={index}>
                     <div>{title}</div>
                     <p>{body}</p>
                 </li>
