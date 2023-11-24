@@ -1,16 +1,15 @@
 import { baseApi } from "shared/api";
-
-import { Article } from "../model/types";
+import { Article } from "entities/article/model";
 
 export const articlesApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getArticlePreviews: build.query<Article[], void>({
-            query: () => ({
-                url: `/posts?_page=1`,
+        getArticlesByPage: build.query<Article[], number>({
+            query: (page) => ({
+                url: `/posts?_page=${page}`,
             }),
             providesTags: ["ARTICLES_TAG"],
         }),
-        getArticle: build.query<Article, string>({
+        getArticleById: build.query<Article, string>({
             query: (articleId) => ({
                 url: `/article/:${articleId}`,
             }),
@@ -19,4 +18,4 @@ export const articlesApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetArticlePreviewsQuery } = articlesApi;
+export const { useGetArticlesByPageQuery } = articlesApi;
