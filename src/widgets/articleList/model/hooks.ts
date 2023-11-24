@@ -1,35 +1,37 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useLazyGetArticlesByPageQuery } from "../api";
 
 export const useArticleList = () => {
     const [page, setPage] = useState(1);
-    const [getPage, { data = [], isLoading }] = useLazyGetArticlesByPageQuery();
+    const [getPage, { data: articles = [], isLoading }] =
+        useLazyGetArticlesByPageQuery();
 
-    // const handleScroll = useCallback(() => {
-    //     if (
-    //         window.innerHeight + document.documentElement.scrollTop !==
-    //             document.documentElement.offsetHeight ||
-    //         isLoading
-    //     ) {
-    //         return;
-    //     }
+    useEffect(() => {
+        const handleScroll = () => {
+            console.log(page);
 
-    //     setPage(page + 1);
-    // }, [isLoading]);
+            const scrolledToBottom =
+                window.innerHeight + window.scrollY >=
+                document.body.offsetHeight;
+
+            if (scrolledToBottom && !isLoading) {
+                setPage(page + 1);
+            }
+        };
+
+        document.addEventListener("scroll", handleScroll);
+
+        return function () {
+            document.removeEventListener("scroll", handleScroll);
+        };
+    }, [page, isLoading, getPage]);
 
     useEffect(() => {
         getPage(page);
-    }, [page]);
-
-    // useEffect(() => {
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => window.removeEventListener("scroll", handleScroll);
-    // }, [handleScroll]);
+    }, [page, getPage]);
 
     return {
-        data,
-        page,
-        setPage,
+        articles,
     };
 };
