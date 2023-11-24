@@ -8,6 +8,15 @@ export const articlesApi = baseApi.injectEndpoints({
                 url: `/posts?_page=${page}`,
             }),
             providesTags: ["ARTICLES_TAG"],
+            serializeQueryArgs: ({ endpointName }) => {
+                return endpointName;
+            },
+            merge: (currentCache, newItems) => {
+                currentCache.push(...newItems);
+            },
+            forceRefetch({ currentArg, previousArg }) {
+                return currentArg !== previousArg;
+            },
         }),
         getArticleById: build.query<Article, string>({
             query: (articleId) => ({
@@ -18,4 +27,4 @@ export const articlesApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetArticlesByPageQuery } = articlesApi;
+export const { useLazyGetArticlesByPageQuery } = articlesApi;

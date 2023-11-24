@@ -1,7 +1,7 @@
 import { useArticleList } from "../model/hooks";
 
 export const ArticleList = () => {
-    const { data } = useArticleList();
+    const { page, setPage, data } = useArticleList();
 
     return (
         <ul className="list-none text-left">
@@ -12,7 +12,10 @@ export const ArticleList = () => {
                         <span className="text-xl">{title}</span>
                         <p className="truncate">{body}</p>
                     </div>
-                    <button className="flex-none border-solid border-2 border-indigo-600 px-2">
+                    <button
+                        className="flex-none border-solid border-2 border-indigo-600 px-2"
+                        onClick={() => setPage(page + 1)}
+                    >
                         Read more
                     </button>
                 </li>
