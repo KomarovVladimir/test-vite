@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useLazyGetArticlesByPageQuery } from "../api";
+import { useLazyGetArticlesByPageQuery } from "../api/articlesApi";
 
 export const useArticleList = () => {
     const navigate = useNavigate();

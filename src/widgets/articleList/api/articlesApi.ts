@@ -1,7 +1,7 @@
 import { baseApi } from "shared/api";
 import { Article } from "entities/article/model";
 
-export const articlesApi = baseApi.injectEndpoints({
+export const articleListApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         getArticlesByPage: build.query<Article[], number>({
             query: (page) => ({
@@ -18,13 +18,7 @@ export const articlesApi = baseApi.injectEndpoints({
                 return currentArg !== previousArg;
             },
         }),
-        getArticleById: build.query<Article, string>({
-            query: (articleId) => ({
-                url: `/article/:${articleId}`,
-            }),
-            providesTags: ["ARTICLES_TAG"],
-        }),
     }),
 });
 
-export const { useLazyGetArticlesByPageQuery } = articlesApi;
+export const { useLazyGetArticlesByPageQuery } = articleListApi;
