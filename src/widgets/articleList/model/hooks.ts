@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useLazyGetArticlesByPageQuery } from "../api";
 
 export const useArticleList = () => {
+    const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [getPage, { data: articles = [], isLoading }] =
         useLazyGetArticlesByPageQuery();
+
+    const handleNavigate = (pageId: string) => () => {
+        navigate(`article/${pageId}`);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,5 +39,6 @@ export const useArticleList = () => {
 
     return {
         articles,
+        handleNavigate,
     };
 };
