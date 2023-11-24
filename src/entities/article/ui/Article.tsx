@@ -2,12 +2,14 @@ import { useNavigate } from "react-router";
 
 import { useArticle } from "../model/hooks";
 
-export const ArticleContent = (articleId: string) => {
+type Props = { articleId: string };
+
+export const ArticleContent = ({ articleId }: Props) => {
     const { id, title, body } = useArticle(articleId);
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate(`../`);
+        navigate(`/`, { replace: true });
     };
 
     return (

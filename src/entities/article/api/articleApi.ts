@@ -5,7 +5,7 @@ export const articleApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
         getArticleById: build.query<Article, string>({
             query: (articleId) => ({
-                url: `/article/:${articleId}`,
+                url: `/posts/${articleId}`,
             }),
             providesTags: ["ARTICLES_TAG"],
         }),

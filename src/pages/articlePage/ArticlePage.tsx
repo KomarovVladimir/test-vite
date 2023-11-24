@@ -1,1 +1,3 @@
-export const ArticlePage = () => <div>Article Page</div>;
+import { ArticleContent } from "entities/article/ui";
+
+export const ArticlePage = () => <ArticleContent articleId="2" />;
