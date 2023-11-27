@@ -22,7 +22,7 @@ export const Router = () => {
             element: <MainLayout />,
             children: [
                 {
-                    path: PATH_PAGE.home,
+                    index: true,
                     element: <FeedPage />,
                 },
                 {
@@ -41,7 +41,6 @@ export const Router = () => {
                         { path: ":id", element: <ArticlePage /> },
                     ],
                 },
-
                 {
                     path: "*",
                     element: <Navigate to={PATH_PAGE.page404} replace />,
