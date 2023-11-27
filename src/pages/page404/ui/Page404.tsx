@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
+import { PATH_PAGE } from "shared/lib/reactRouter";
+
 export const Page404 = () => {
     const navigate = useNavigate();
     const handleNavigate = () => {
-        navigate(`/`, { replace: true });
+        navigate(PATH_PAGE.root, { replace: true });
     };
 
     return (

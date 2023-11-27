@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 
+import { PATH_PAGE } from "shared/lib/reactRouter";
+
 import { useArticle } from "../model/hooks";
 
 export const ArticleContent = () => {
@@ -9,7 +11,7 @@ export const ArticleContent = () => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate(`/`, { replace: true });
+        navigate(PATH_PAGE.root, { replace: true });
     };
 
     return (

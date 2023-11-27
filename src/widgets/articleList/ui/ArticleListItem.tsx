@@ -12,7 +12,7 @@ type Props = {
 export const ArticleListItem = memo(({ index = 0, data, style }: Props) => {
     const navigate = useNavigate();
     const handleNavigate = (pageId: string) => () => {
-        navigate(`article/${pageId}`);
+        navigate(`/article/${pageId}`);
     };
     const { id, title, body } = data[index];
 
