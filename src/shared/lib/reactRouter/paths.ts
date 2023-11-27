@@ -1,5 +1,5 @@
 export const PATH_PAGE = {
-    root: "/test-vite",
+    root: "test-vite",
     article: {
         id: (id: string) => `article/${id}`,
     },
