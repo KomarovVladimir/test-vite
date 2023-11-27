@@ -5,7 +5,7 @@ import { ArticleListItem } from "./ArticleListItem";
 import { useArticleList } from "../model/hooks";
 
 export const ArticleList = () => {
-    const { articles } = useArticleList();
+    const { articles, listRef } = useArticleList();
 
     return (
         <List
@@ -15,6 +15,7 @@ export const ArticleList = () => {
             itemSize={115}
             width="100%"
             itemData={articles}
+            outerRef={listRef}
         >
             {ArticleListItem}
         </List>
