@@ -18,10 +18,11 @@ const ArticlePage = Loadable(
 export const Router = () => {
     return useRoutes([
         {
+            path: PATH_PAGE.root,
             element: <MainLayout />,
             children: [
                 {
-                    path: PATH_PAGE.root,
+                    path: PATH_PAGE.home,
                     element: <FeedPage />,
                 },
                 {

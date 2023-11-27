@@ -2,6 +2,7 @@ import { CSSProperties, memo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Article } from "entities/article/model";
+import { PATH_PAGE } from "shared/lib/reactRouter";
 
 type Props = {
     data: Article[];
@@ -12,7 +13,7 @@ type Props = {
 export const ArticleListItem = memo(({ index = 0, data, style }: Props) => {
     const navigate = useNavigate();
     const handleNavigate = (pageId: string) => () => {
-        navigate(`/article/${pageId}`);
+        navigate(PATH_PAGE.article.id(pageId));
     };
     const { id, title, body } = data[index];
 
