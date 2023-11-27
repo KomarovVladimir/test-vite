@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 
-import { useAppSelector } from "shared/model/hooks";
+import { useAppDispatch, useAppSelector } from "shared/model/hooks";
 
 import { selectPage, setPage } from "./slice";
 import { useLazyGetArticlesByPageQuery } from "../api/articleListApi";
 
 export const useArticleList = () => {
+    const dispatch = useAppDispatch();
     const listRef = useRef<HTMLDivElement>(null);
     const page = useAppSelector(selectPage);
 
@@ -21,7 +22,7 @@ export const useArticleList = () => {
                     element?.clientHeight;
 
                 if (scrolledToBottom && !isLoading) {
-                    setPage(page + 1);
+                    dispatch(setPage(page + 1));
                 }
             }
         };
