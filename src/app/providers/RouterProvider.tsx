@@ -18,10 +18,11 @@ const ArticlePage = Loadable(
 export const Router = () => {
     return useRoutes([
         {
+            path: PATH_PAGE.root,
             element: <MainLayout />,
             children: [
                 {
-                    path: PATH_PAGE.root,
+                    index: true,
                     element: <FeedPage />,
                 },
                 {
@@ -39,11 +40,6 @@ export const Router = () => {
                         },
                         { path: ":id", element: <ArticlePage /> },
                     ],
-                },
-
-                {
-                    path: "*",
-                    element: <Navigate to={PATH_PAGE.page404} replace />,
                 },
             ],
         },
