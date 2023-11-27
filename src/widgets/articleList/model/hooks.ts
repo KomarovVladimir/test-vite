@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLazyGetArticlesByPageQuery } from "../api/articlesApi";
 
 export const useArticleList = () => {
+    const itemHeight = 35;
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
     const [getPage, { data: articles = [], isLoading }] =
@@ -15,13 +16,13 @@ export const useArticleList = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            console.log(page);
-
             const scrolledToBottom =
                 window.innerHeight + window.scrollY >=
                 document.body.offsetHeight;
 
             if (scrolledToBottom && !isLoading) {
+                console.log(scrolledToBottom, isLoading);
+
                 setPage(page + 1);
             }
         };
@@ -38,6 +39,7 @@ export const useArticleList = () => {
     }, [page, getPage]);
 
     return {
+        itemHeight,
         articles,
         handleNavigate,
     };

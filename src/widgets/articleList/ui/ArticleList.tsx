@@ -1,19 +1,22 @@
+import { FixedSizeList as List } from "react-window";
+
 import { ArticleListItem } from "./ArticleListItem";
 
 import { useArticleList } from "../model/hooks";
 
 export const ArticleList = () => {
-    const { articles, handleNavigate } = useArticleList();
+    const { articles } = useArticleList();
 
     return (
-        <ul className="list-none text-left">
-            {articles.map((data, index) => (
-                <ArticleListItem
-                    key={index}
-                    className="flex gap-4 mb-16"
-                    {...{ ...data, handleNavigate }}
-                />
-            ))}
-        </ul>
+        <List
+            className="list-none text-left"
+            height={640}
+            itemCount={articles.length}
+            itemSize={115}
+            width="100%"
+            itemData={articles}
+        >
+            {ArticleListItem}
+        </List>
     );
 };
