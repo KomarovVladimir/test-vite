@@ -41,10 +41,6 @@ export const Router = () => {
                         { path: ":id", element: <ArticlePage /> },
                     ],
                 },
-                // {
-                //     path: "*",
-                //     element: <Navigate to={PATH_PAGE.page404} replace />,
-                // },
             ],
         },
     ]);
