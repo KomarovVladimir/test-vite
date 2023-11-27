@@ -1,7 +1,6 @@
 import { FixedSizeList as List } from "react-window";
 
 import { ArticleListItem } from "./ArticleListItem";
-
 import { useArticleList } from "../model/hooks";
 
 export const ArticleList = () => {

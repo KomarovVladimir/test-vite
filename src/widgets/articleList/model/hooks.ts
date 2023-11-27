@@ -1,10 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
+import { useAppSelector } from "shared/model/hooks";
+
+import { selectPage, setPage } from "./slice";
 import { useLazyGetArticlesByPageQuery } from "../api/articleListApi";
 
 export const useArticleList = () => {
     const listRef = useRef<HTMLDivElement>(null);
-    const [page, setPage] = useState(1);
+    const page = useAppSelector(selectPage);
+
     const [getPage, { data: articles = [], isLoading }] =
         useLazyGetArticlesByPageQuery();
 

@@ -1,4 +1,4 @@
-import { CSSProperties, memo } from "react";
+import { CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Article } from "entities/article/model";
@@ -9,7 +9,7 @@ type Props = {
     style?: CSSProperties;
 };
 
-export const ArticleListItem = memo(({ index = 0, data, style }: Props) => {
+export const ArticleListItem = ({ index = 0, data, style }: Props) => {
     const navigate = useNavigate();
     const handleNavigate = (pageId: string) => () => {
         navigate(`article/${pageId}`);
@@ -31,4 +31,4 @@ export const ArticleListItem = memo(({ index = 0, data, style }: Props) => {
             </button>
         </li>
     );
-});
+};
