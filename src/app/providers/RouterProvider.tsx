@@ -18,6 +18,7 @@ const ArticlePage = Loadable(
 export const Router = () => {
     return useRoutes([
         {
+            path: "test-vite",
             element: <MainLayout />,
             children: [
                 {
