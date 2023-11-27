@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { useLazyGetArticlesByPageQuery } from "../api/articlesApi";
+import { useLazyGetArticlesByPageQuery } from "../api/articleListApi";
 
 export const useArticleList = () => {
     const listRef = useRef<HTMLDivElement>(null);
