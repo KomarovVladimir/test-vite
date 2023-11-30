@@ -1,17 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "shared/model/hooks";
-
-import { selectPage, setPage } from "./slice";
-import { useLazyGetArticlesByPageQuery } from "../api/articleListApi";
+import { useGetArticlesByPageQuery } from "../api/articleListApi";
 
 export const useArticleList = () => {
-    const dispatch = useAppDispatch();
     const listRef = useRef<HTMLDivElement>(null);
-    const page = useAppSelector(selectPage);
+    const [page, setPage] = useState(1);
 
-    const [getPage, { data: articles = [], isLoading }] =
-        useLazyGetArticlesByPageQuery();
+    const { data: articles = [], isLoading } = useGetArticlesByPageQuery(page);
 
     useEffect(() => {
         const element = listRef.current || null;
@@ -22,7 +17,7 @@ export const useArticleList = () => {
                     element?.clientHeight;
 
                 if (scrolledToBottom && !isLoading) {
-                    dispatch(setPage(page + 1));
+                    setPage(page + 1);
                 }
             }
         };
@@ -33,10 +28,6 @@ export const useArticleList = () => {
             element?.removeEventListener("scroll", handleScroll);
         };
     }, [isLoading, page]);
-
-    useEffect(() => {
-        getPage(page);
-    }, [page, getPage]);
 
     return {
         listRef,

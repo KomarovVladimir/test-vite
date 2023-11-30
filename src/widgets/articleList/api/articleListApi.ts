@@ -21,4 +21,4 @@ export const articleListApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useLazyGetArticlesByPageQuery } = articleListApi;
+export const { useGetArticlesByPageQuery } = articleListApi;
