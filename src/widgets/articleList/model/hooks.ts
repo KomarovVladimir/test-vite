@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 
+import { pageContext } from "shared/context/pageContext";
 import { useGetArticlesByPageQuery } from "../api/articleListApi";
 
 export const useArticleList = () => {
     const listRef = useRef<HTMLDivElement>(null);
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
+    const { page, setPage } = useContext(pageContext);
 
     const { data: articles = [], isLoading } = useGetArticlesByPageQuery(page);
 
